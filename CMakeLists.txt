@@ -26,3 +26,14 @@ add_custom_command(
     TARGET custom_target PRE_BUILD
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/test.py
 )
+
+# execute a script at configure time and check the return status
+execute_process(
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/status.py
+    RESULT_VARIABLE RETURN_STATUS
+)
+
+# normal script execution returns status 0 (exceptions return status 1)
+if(RETURN_STATUS EQUAL 0)
+    message("status.py - ok status")
+endif()
