@@ -1,1 +1,1 @@
-print("testing script...")
+print("testing build time script...")
